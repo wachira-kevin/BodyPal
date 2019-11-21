@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/resultsItem"
+        android:title="@string/results"/>
+
+    <item android:id="@+id/settingsItem"
+        android:title="@string/settings"/>
+
+    <item
+        android:id="@+id/bluetoothItem"
+        android:title="@string/bluetooth"/>
+
+    <item
+        android:id="@+id/deviceItem"
+        android:title="@string/devices">
+        <menu></menu>
+    </item>
+
+</menu>

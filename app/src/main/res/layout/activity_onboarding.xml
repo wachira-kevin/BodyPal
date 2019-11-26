@@ -29,7 +29,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/line" />
+        app:srcCompat="@drawable/line"
+        android:contentDescription="@string/image" />
 
     <TextView
         android:id="@+id/skipTextView"

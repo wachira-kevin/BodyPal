@@ -9,11 +9,13 @@
     <item
         android:id="@+id/bluetoothItem"
         android:title="@string/bluetooth"/>
-
+    <item
+        android:id="@+id/logOutItem"
+        android:title="@string/log_out"/>
     <item
         android:id="@+id/deviceItem"
         android:title="@string/devices">
-        <menu></menu>
+        <menu/>
     </item>
 
 </menu>

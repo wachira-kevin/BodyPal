@@ -23,7 +23,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@drawable/fire" />
+        app:srcCompat="@drawable/fire"
+        android:contentDescription="@string/flame" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -34,7 +35,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView"
-        app:srcCompat="@drawable/eclipse" />
+        app:srcCompat="@drawable/eclipse"
+        android:contentDescription="@string/your_weight" />
 
     <ImageView
         android:id="@+id/imageView4"
@@ -44,7 +46,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:srcCompat="@drawable/man" />
+        app:srcCompat="@drawable/man"
+        android:contentDescription="@string/man" />
 
     <TextView
         android:id="@+id/textView"
@@ -74,15 +77,16 @@
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <Button
-        android:background="@color/colorButtons"
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:background="@color/colorButtons"
         android:text="@string/save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

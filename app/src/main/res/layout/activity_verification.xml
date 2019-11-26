@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerificationActivity">
+
+    <Button
+        android:id="@+id/continueButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/colorButtons"
+        android:onClick="btnContinue"
+        android:text="@string/continue_string"
+        app:layout_constraintEnd_toEndOf="@+id/emailResendTextView"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/emailResendTextView"
+        app:layout_constraintTop_toBottomOf="@+id/emailResendTextView" />
+
+    <ImageView
+        android:id="@+id/emailImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/email" />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/emailHeadingTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/emailHeading"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/emailImageView"
+        app:layout_constraintStart_toStartOf="@+id/emailImageView"
+        app:layout_constraintTop_toBottomOf="@+id/emailImageView" />
+
+    <TextView
+        android:id="@+id/emailVerificationTextView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/emailVerification"
+        app:layout_constraintEnd_toEndOf="@+id/emailHeadingTextView"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/emailHeadingTextView"
+        app:layout_constraintTop_toBottomOf="@+id/emailHeadingTextView" />
+
+    <TextView
+        android:id="@+id/emailVerificationTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emailVerification2"
+        app:layout_constraintEnd_toEndOf="@+id/emailVerificationTextView1"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="@+id/emailVerificationTextView1"
+        app:layout_constraintTop_toBottomOf="@+id/emailVerificationTextView1" />
+
+    <TextView
+        android:id="@+id/emailVerificationTextView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/emailVerification3"
+        app:layout_constraintEnd_toEndOf="@+id/emailVerificationTextView2"
+        app:layout_constraintStart_toStartOf="@+id/emailVerificationTextView2"
+        app:layout_constraintTop_toBottomOf="@+id/emailVerificationTextView2" />
+
+    <TextView
+        android:id="@+id/emailResendTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/emailResend"
+        android:textColor="@color/link"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailVerificationTextView3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

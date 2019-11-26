@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -23,6 +22,9 @@ import android.view.MenuItem;
 import android.view.SubMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -64,7 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
         mBtDevices = new ArrayList<>();
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(messageReciever, new IntentFilter("IncomingMessage"));
+        IntentFilter messageIntent = new IntentFilter("IncomingMessage");
+        registerReceiver(messageReceiver, messageIntent);
+
 
     }
 
@@ -75,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.toolbar_menu, menu);
 
         requestPermission();
-        SubMenu deviceMenu = menu.getItem(3).getSubMenu();
+        SubMenu deviceMenu = menu.getItem(4).getSubMenu();
         Set<BluetoothDevice> pairedDevices = bluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
             // There are paired devices. Get the name and address of each paired device.
             for (BluetoothDevice device : pairedDevices) {
                 String deviceName = device.getName();
-                deviceMenu.add(deviceName);
+                deviceMenu.add(0,10, Menu.NONE, deviceName);
 
             }
         }
@@ -94,19 +98,22 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.settingsItem:
+            case R.id.resultsItem:
                 Intent settingsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(settingsIntent);
                 return true;
-            case R.id.resultsItem:
-                Intent resultsIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(resultsIntent);
             case R.id.bluetoothItem:
                 requestPermission();
+                return true;
+            case R.id.logOutItem:
+                signOut();
+                return true;
+            case 10:
+                Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_LONG).show();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-
     }
     //REQUESTING BLUETOOTH PERMISSION FROM USER
     private void requestPermission(){
@@ -162,8 +169,14 @@ public class MainActivity extends AppCompatActivity {
         mBluetoothService.startClient(device, uuid);
     }
 
+    private void signOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+        startActivity(intent);
+    }
+
     //MESSAGE RECEIVER
-    private final BroadcastReceiver messageReciever = new BroadcastReceiver() {
+    private final BroadcastReceiver messageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
 
@@ -176,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(messageReciever);
+        unregisterReceiver(messageReceiver);
 
     }
 }

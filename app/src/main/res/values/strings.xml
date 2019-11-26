@@ -30,4 +30,14 @@
     <string name="bluetooth">Bluetooth</string>
     <string name="results">Results</string>
     <string name="devices">Devices</string>
+    <string name="flame">Flame</string>
+    <string name="man">Man</string>
+    <string name="image">image</string>
+    <string name="log_out">Log Out</string>
+    <string name="emailVerification">Click the link in your email to confirm your account.</string>
+    <string name="emailVerification2">If you can not find the email click link below to</string>
+    <string name="emailVerification3">re-send email.</string>
+    <string name="continue_string">Continue</string>
+    <string name="emailHeading">Time to Check You Email</string>
+    <string name="emailResend">Resend Confirmation Email</string>
 </resources>

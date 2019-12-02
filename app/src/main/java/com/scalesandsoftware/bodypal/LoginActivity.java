@@ -7,7 +7,6 @@ import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
-import android.widget.Button;
 import android.text.TextUtils;
 import android.content.Intent;
 import android.widget.EditText;
@@ -26,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LOGIN ACTIVITY";
 
     //VARIABLES
-    Button login, signUp;
     EditText email, password;
 
     //INSTANCE OF FIREBASE AUTHENTICATION
@@ -38,8 +36,6 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //INITIALIZING VIEWS
-        login = findViewById(R.id.loginButton);
-        signUp = findViewById(R.id.signUpButton);
         email = findViewById(R.id.emailEditText);
         password = findViewById(R.id.passwordEditText);
 
@@ -100,6 +96,9 @@ public class LoginActivity extends AppCompatActivity {
         String userEmail = email.getText().toString();
         String userPassword = password.getText().toString();
 
+        intent.putExtra("Email", userEmail);
+        intent.putExtra("password", userPassword);
+
         //HANDLING  EMPTY FIELDS
         if (TextUtils.isEmpty(userEmail)){
             Toast.makeText(LoginActivity.this, "please enter an email", Toast.LENGTH_SHORT).show();
@@ -115,8 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    FirebaseAuth auth = FirebaseAuth.getInstance();
-                    FirebaseUser user = auth.getCurrentUser();
+                    FirebaseUser user = mAuth.getCurrentUser();
                     if (user != null){
                         user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
